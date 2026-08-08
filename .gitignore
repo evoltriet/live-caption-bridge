@@ -1,0 +1,14 @@
+node_modules/
+out/
+release/
+coverage/
+playwright-report/
+test-results/
+offline/models/
+offline/results/
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
