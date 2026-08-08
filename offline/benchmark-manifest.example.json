@@ -1,0 +1,20 @@
+{
+  "fixtures": [
+    {
+      "id": "en-toast-001",
+      "wav": "fixtures/en-toast-001.wav",
+      "locale": "en-US",
+      "reference": "Welcome, family and friends.",
+      "translation_reference": "Chào mừng gia đình và bạn bè.",
+      "meaning_preserved": null
+    },
+    {
+      "id": "vi-toast-001",
+      "wav": "fixtures/vi-toast-001.wav",
+      "locale": "vi-VN",
+      "reference": "Chúc hai bạn trăm năm hạnh phúc.",
+      "translation_reference": "Wishing you both a lifetime of happiness.",
+      "meaning_preserved": null
+    }
+  ]
+}

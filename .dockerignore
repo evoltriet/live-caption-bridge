@@ -1,0 +1,12 @@
+.git
+.github
+node_modules
+out
+release
+coverage
+playwright-report
+test-results
+offline/fixtures
+offline/models
+offline/results
+*.log
