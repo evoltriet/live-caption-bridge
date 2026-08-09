@@ -26,14 +26,14 @@ jobs:
       - name: Generate SHA-256 checksums
         shell: pwsh
         run: |
-          Get-ChildItem release -File | Where-Object Extension -In '.exe', '.zip' |
+          Get-ChildItem apps/desktop-host/release -File | Where-Object Extension -In '.exe', '.zip' |
             Get-FileHash -Algorithm SHA256 |
             ForEach-Object { "{0}  {1}" -f $_.Hash.ToLowerInvariant(), (Split-Path $_.Path -Leaf) } |
-            Set-Content -Encoding utf8 release/SHA256SUMS.txt
+            Set-Content -Encoding utf8 apps/desktop-host/release/SHA256SUMS.txt
       - uses: softprops/action-gh-release@v2
         with:
           draft: true
           files: |
-            release/*.exe
-            release/*.zip
-            release/SHA256SUMS.txt
+            apps/desktop-host/release/*.exe
+            apps/desktop-host/release/*.zip
+            apps/desktop-host/release/SHA256SUMS.txt

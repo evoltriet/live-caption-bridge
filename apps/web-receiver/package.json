@@ -1,0 +1,17 @@
+{
+  "name": "@live-caption-bridge/web-receiver",
+  "version": "0.1.0-alpha.1",
+  "private": false,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@live-caption-bridge/caption-protocol": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}

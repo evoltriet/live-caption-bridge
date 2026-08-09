@@ -29,7 +29,7 @@ Word-level code switching is best-effort. Switch languages between speakers or u
 2. Start a short session in English, then Vietnamese.
 3. Confirm source and translated final text appear in the correct fixed lanes.
 4. Unplug Ethernet for at least 10 seconds and confirm the unavailable state.
-5. connect the rehearsed hotspot and verify recovery.
+5. Connect the rehearsed hotspot and verify recovery.
 6. End the session and verify no transcript file exists unless you explicitly exported one.
 
 Real Azure integration tests are opt-in because they incur usage and require a secret. Never use recordings without speaker permission.

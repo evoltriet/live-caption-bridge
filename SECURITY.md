@@ -12,10 +12,13 @@ Include the affected commit/version, reproduction steps using synthetic content,
 
 ## Security invariants
 
-- Display services bind only to `127.0.0.1`.
+- The default display service binds only to `127.0.0.1:43117`.
+- LAN sharing is separate, opt-in, private-interface-only, capped at 50 read-only clients, and requires a random session token in the first WebSocket message.
+- LAN tokens live in the pairing URL fragment, never health responses or logs, and are invalidated when sharing or the caption session ends.
+- LAN traffic is authenticated but not encrypted; the UI must warn operators to use only a trusted venue network.
 - No audio is saved.
 - Transcript export requires an explicit operator file choice.
 - The renderer is sandboxed with context isolation and no Node integration.
 - IPC payloads are validated and audio chunk size is bounded.
 - Credentials are session-only or encrypted with Electron `safeStorage`.
-- Logs and health endpoints contain no captions, audio, or credentials.
+- Logs and health endpoints contain no captions, audio, credentials, or pairing tokens.

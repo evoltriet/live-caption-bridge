@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "status": "not-run",
+  "evaluatedAt": null,
+  "nottaPlanAndAddOn": null,
+  "rig": {
+    "windowsVersion": null,
+    "cpu": null,
+    "memoryGb": null,
+    "audioInterface": null,
+    "mixerFeed": "mic-only post-fader aux",
+    "network": null,
+    "displayWorkflow": null
+  },
+  "sampleCounts": {
+    "englishUtterances": 0,
+    "vietnameseUtterances": 0,
+    "alternatingLanguageUtterances": 0
+  },
+  "results": {
+    "sourcePartialLatencyP95Ms": null,
+    "finalBilingualLatencyP95Ms": null,
+    "languageIdentificationAccuracy": null,
+    "meaningPreservedRate": null,
+    "networkLossRecoveryMs": null,
+    "projectorLegible": null,
+    "obsWindowCaptureUsable": null,
+    "quotaAndSessionLimitVerified": false,
+    "permanentDeletionVerified": false
+  },
+  "consent": {
+    "cloudRecordingApproved": false,
+    "personalContentExcludedFromRepository": true
+  },
+  "notesWithoutTranscriptContent": []
+}
