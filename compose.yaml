@@ -1,0 +1,31 @@
+services:
+  quality:
+    build: .
+    command: pnpm check
+  fixture-tests:
+    build: .
+    command: pnpm test
+  offline-benchmark:
+    profiles: ["offline"]
+    build:
+      context: .
+      dockerfile: offline/Dockerfile
+    volumes:
+      - ./offline:/workspace/offline
+    command:
+      - --manifest
+      - offline/benchmark-manifest.example.json
+      - --engine
+      - faster-whisper
+      - --model
+      - small
+      - --output
+      - offline/results/faster-whisper-small.json
+  model-conversion:
+    profiles: ["offline"]
+    build:
+      context: .
+      dockerfile: offline/Dockerfile
+    entrypoint: ["python", "offline/convert_opus.py"]
+    volumes:
+      - ./offline:/workspace/offline

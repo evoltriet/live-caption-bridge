@@ -1,0 +1,33 @@
+{
+  "name": "live-caption-bridge",
+  "version": "0.1.0-alpha.1",
+  "private": true,
+  "description": "Local-first live caption delivery with an English–Vietnamese wedding reference solution.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter @live-caption-bridge/desktop-host dev",
+    "build": "pnpm --filter @live-caption-bridge/desktop-host build",
+    "start": "pnpm --filter @live-caption-bridge/desktop-host start",
+    "lint": "eslint .",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "test": "pnpm --filter @live-caption-bridge/desktop-host test",
+    "test:watch": "pnpm --filter @live-caption-bridge/desktop-host test:watch",
+    "test:e2e": "pnpm --filter @live-caption-bridge/desktop-host test:e2e",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "dist:win": "pnpm --filter @live-caption-bridge/desktop-host dist:win"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "eslint": "^9.33.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.40.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.16.0"
+}

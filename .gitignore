@@ -6,6 +6,11 @@ playwright-report/
 test-results/
 offline/models/
 offline/results/
+offline/fixtures/
+evaluation/*.json
+!evaluation/*.example.json
+*.tsbuildinfo
+.venv*/
 *.log
 .env
 .env.*
