@@ -1,8 +1,8 @@
 # Live Caption Bridge — Project Context
 
 **Canonical project source of truth**
-**Last updated:** 2026-08-09
-**Evidence cutoff:** 2026-08-09
+**Last updated:** 2026-08-12
+**Evidence cutoff:** 2026-08-12
 
 Read this file before planning or changing the project. Update it in the same change whenever a product decision, verified capability, vendor fact, or backlog status changes.
 
@@ -27,8 +27,8 @@ Only `en-US` and `vi-VN` are production-qualified for the initial release. Switc
 - **Implemented / automated verified:** `feat/platform-foundation` contains the pnpm workspace; generic Live Caption Bridge branding; Electron, React, and strict-TypeScript Windows host; selected-device audio capture and 16 kHz mono PCM conversion; Azure adapter; operator controls; in-memory store; versioned locale-neutral protocol/client packages; opaque fullscreen, transparent OBS, and native always-on-top/non-focusable overlay routes; responsive authenticated LAN receiver; first-message token validation, session invalidation, read-only enforcement, and 50-client bound; explicit TXT/JSON/WebVTT exports; safeStorage credentials; redacted operational logging; Docker development fixtures; unsigned Windows installer, portable executable, ZIP, and SHA-256 checksums.
 - **Automated evidence:** `pnpm check` passes 9 test files/19 tests plus lint, strict typechecking across four packages, and production builds. Electron E2E passes with injected PCM and verifies the operator, 720p/1080p/4K screen route, OBS transparency, and native overlay window flags.
 - **Field validation needed:** real Azure credentials, bilingual accuracy and latency, direct mixer/USB-interface input, physical mouse click-through over PowerPoint/browser video/VLC, external-display recovery, representative LAN event-to-render latency, OBS load, two-hour thermal and memory stability, network/hotspot recovery, Notta comparison, and venue setup time.
-- **Planned:** publication of the draft pull request and `v0.1.0-alpha.1` artifacts after GitHub authentication is available.
-- **Not published:** the local repository and release artifacts have not yet been pushed to a public GitHub repository.
+- **Published 2026-08-12:** the public [`evoltriet/live-caption-bridge`](https://github.com/evoltriet/live-caption-bridge) repository has a minimal `main`, the implementation is published on `feat/platform-foundation`, and [draft pull request #1](https://github.com/evoltriet/live-caption-bridge/pull/1) is open.
+- **Planned:** publish the unsigned `v0.1.0-alpha.1` Windows artifacts after the tag workflow passes and the draft release is reviewed. Binary publication does not satisfy any field-validation gate.
 
 Automated success never implies venue readiness. The app must not be described as production-ready until all field gates and two complete rehearsals pass.
 
