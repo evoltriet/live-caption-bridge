@@ -49,6 +49,7 @@ let audienceWindow: BrowserWindow | undefined
 let audienceDisplayId: number | undefined
 let nativeOverlayWindow: BrowserWindow | undefined
 let nativeOverlayDisplayId: number | undefined
+let nativeOverlayGeneration = 0
 let lanServer: LanDisplayServer | undefined
 let lanShareState = createInactiveLanShareState()
 let credentialStore: CredentialStore
@@ -294,6 +295,7 @@ async function openNativeOverlay(options: NativeOverlayOptions): Promise<void> {
     throw new Error('The selected overlay display is no longer connected.')
   }
   closeNativeOverlay()
+  const generation = nativeOverlayGeneration
 
   const bounds = target.bounds
   const width = Math.round(bounds.width * (options.widthPercent / 100))
@@ -309,7 +311,7 @@ async function openNativeOverlay(options: NativeOverlayOptions): Promise<void> {
         : bounds.y + bounds.height - height - margin
 
   nativeOverlayDisplayId = options.displayId
-  nativeOverlayWindow = new BrowserWindow({
+  const overlayWindow = new BrowserWindow({
     x,
     y,
     width,
@@ -333,11 +335,14 @@ async function openNativeOverlay(options: NativeOverlayOptions): Promise<void> {
       sandbox: true
     }
   })
-  nativeOverlayWindow.setAlwaysOnTop(true, 'screen-saver', 1)
-  nativeOverlayWindow.setIgnoreMouseEvents(true, { forward: true })
-  nativeOverlayWindow.on('closed', () => {
-    nativeOverlayWindow = undefined
-    nativeOverlayDisplayId = undefined
+  nativeOverlayWindow = overlayWindow
+  overlayWindow.setAlwaysOnTop(true, 'screen-saver', 1)
+  overlayWindow.setIgnoreMouseEvents(true, { forward: true })
+  overlayWindow.on('closed', () => {
+    if (nativeOverlayWindow === overlayWindow) {
+      nativeOverlayWindow = undefined
+      nativeOverlayDisplayId = undefined
+    }
   })
 
   const parameters = new URLSearchParams({
@@ -347,14 +352,29 @@ async function openNativeOverlay(options: NativeOverlayOptions): Promise<void> {
     opacity: String(options.opacity),
     background: options.background
   })
-  await nativeOverlayWindow.loadURL(`${overlayBaseUrl}/overlay?${parameters.toString()}`)
-  nativeOverlayWindow.showInactive()
+  try {
+    await overlayWindow.loadURL(`${overlayBaseUrl}/overlay?${parameters.toString()}`)
+  } catch (error) {
+    if (nativeOverlayWindow !== overlayWindow || generation !== nativeOverlayGeneration) {
+      return
+    }
+    throw error
+  }
+  if (
+    nativeOverlayWindow === overlayWindow &&
+    generation === nativeOverlayGeneration &&
+    !overlayWindow.isDestroyed()
+  ) {
+    overlayWindow.showInactive()
+  }
 }
 
 function closeNativeOverlay(): void {
-  nativeOverlayWindow?.close()
+  nativeOverlayGeneration += 1
+  const overlayWindow = nativeOverlayWindow
   nativeOverlayWindow = undefined
   nativeOverlayDisplayId = undefined
+  overlayWindow?.close()
 }
 
 async function stopLanSharing(): Promise<LanShareState> {

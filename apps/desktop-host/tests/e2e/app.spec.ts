@@ -45,7 +45,7 @@ test('captures injected PCM and drives screen, OBS, and native overlay outputs',
     await expect(page.getByText('Welcome, family and friends.')).toBeVisible({ timeout: 10_000 })
     await expect(page.getByText('Chào mừng gia đình và bạn bè.')).toBeVisible()
 
-    await page.getByRole('button', { name: 'Show overlay' }).click()
+    await page.getByRole('button', { name: 'Show overlay' }).dblclick()
     await expect(
       page.getByText('Click-through overlay is visible. Press Close overlay from this console to remove it.')
     ).toBeVisible()
@@ -71,6 +71,7 @@ test('captures injected PCM and drives screen, OBS, and native overlay outputs',
       .toContain('mode=native')
     expect(nativeOverlay).toMatchObject({ alwaysOnTop: true, focusable: false })
     expect(nativeOverlay?.url).toContain('profile=bilingual')
+    expect(nativeOverlay?.url).toContain('opacity=0.65')
 
     const viewports = [
       { width: 1_280, height: 720 },

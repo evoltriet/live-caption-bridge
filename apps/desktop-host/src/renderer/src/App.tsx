@@ -35,7 +35,7 @@ export default function App() {
   const [background, setBackground] = useState<OverlayBackground>('gradient')
   const [widthPercent, setWidthPercent] = useState(92)
   const [scale, setScale] = useState(1)
-  const [opacity, setOpacity] = useState(0.9)
+  const [opacity, setOpacity] = useState(0.65)
   const [lanAddress, setLanAddress] = useState('')
   const [lanShare, setLanShare] = useState<LanShareState>(createInactiveLanShareState())
   const [receiverQr, setReceiverQr] = useState('')
@@ -320,7 +320,7 @@ export default function App() {
             <div className="range-grid">
               <label>Width <strong>{widthPercent}%</strong><input type="range" min="40" max="100" value={widthPercent} onChange={(event) => setWidthPercent(Number(event.target.value))} /></label>
               <label>Scale <strong>{scale.toFixed(1)}×</strong><input type="range" min="0.7" max="1.6" step="0.1" value={scale} onChange={(event) => setScale(Number(event.target.value))} /></label>
-              <label>Surface <strong>{Math.round(opacity * 100)}%</strong><input type="range" min="0.2" max="1" step="0.1" value={opacity} onChange={(event) => setOpacity(Number(event.target.value))} /></label>
+              <label>Surface <strong>{Math.round(opacity * 100)}%</strong><input type="range" min="0.2" max="1" step="0.05" value={opacity} onChange={(event) => setOpacity(Number(event.target.value))} /></label>
             </div>
             <div className="button-row"><button className="secondary" onClick={() => void showNativeOverlay()}>Show overlay</button><button className="secondary" onClick={() => void window.liveCaptionBridge.closeNativeOverlay()}>Close overlay</button></div>
             <small>Use windowed/borderless PowerPoint or video. Exclusive fullscreen can cover desktop overlays; use OBS in that case.</small>
