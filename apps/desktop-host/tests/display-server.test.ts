@@ -22,12 +22,14 @@ describe('local display service', () => {
       scale: 1.2
     })
     expect(obsPage).toContain('background: transparent')
+    expect(obsPage).toContain('--surface-opacity: 0.65')
     expect(obsPage.indexOf('id="english-lane"')).toBeLessThan(
       obsPage.indexOf('id="vietnamese-lane"')
     )
     expect(obsPage).toContain('Tiếng Việt')
     expect(nativePage).toContain('data-profile="vietnamese"')
     expect(nativePage).toContain('data-background="transparent"')
+    expect(nativePage).toContain('--surface-opacity: 0.8')
   })
 
   it('binds on loopback and emits versioned snapshots without leaking captions in health', async () => {

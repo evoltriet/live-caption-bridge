@@ -148,7 +148,7 @@ function parsePageOptions(parameters: URLSearchParams): OverlayPageOptions {
     scale: Number.isFinite(parsedScale) ? Math.min(1.6, Math.max(0.7, parsedScale)) : 1,
     opacity: Number.isFinite(parsedOpacity)
       ? Math.min(1, Math.max(0.2, parsedOpacity))
-      : 0.9
+      : 0.65
   }
 }
 
@@ -161,7 +161,7 @@ export function renderOverlayPage(
   const profile = options.profile ?? 'bilingual'
   const background = options.background ?? 'gradient'
   const scale = Math.min(1.6, Math.max(0.7, options.scale ?? 1))
-  const opacity = Math.min(1, Math.max(0.2, options.opacity ?? 0.9))
+  const opacity = Math.min(1, Math.max(0.2, options.opacity ?? 0.65))
   return `<!doctype html>
 <html lang="en" data-mode="${mode}" data-profile="${profile}" data-background="${background}">
 <head>
